@@ -180,8 +180,9 @@
             <h3>Veg Biryani</h3>
             <p>Aromatic rice with mixed veggies and spices.</p>
             <p class="price">₹300 per kg</p>
-            <button onclick="addToCart('Veg Biryani', 300)">Order Now</button>
+            <button onclick="addToCart('Veg Biryani', 300); window.location.href='order.html';">Order Now</button>
         </div>
+        
 
         <div class="menu-item">
             <img src="gujarati.jpg" alt="Gujarati Thali">
@@ -222,6 +223,22 @@
             <p class="price">₹100</p>
             <button onclick="addToCart('Chinese Food', 150)">Order Now</button>
         </div>
+        <script>
+            function addToCart(itemName, price) {
+                // Get the current cart from localStorage or initialize as an empty array
+                let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    
+                // Add the new item to the cart
+                cart.push({ itemName, price });
+    
+                // Save the updated cart back to localStorage
+                localStorage.setItem('cart', JSON.stringify(cart));
+    
+                // Redirect to the order page
+                window.location.href = 'order.html';
+            }
+        </script>
+    
     </section>
     <section style="text-align: center; color: #31044b;">
         <h2> Take away and Home delivery both are available</h2>
@@ -229,7 +246,6 @@
     </section>
                       
     <section id="gallery">
-        <h1 style="text-align: center;"> <p style="color: #31044b; font-size: 100%; "><a href="order.html">Get it delivered!</a></p></h1>
         <h2>Gallery</h2>
         <div class="gallery">
             <img src="biryani.jpg" alt="Veg Biryani">
